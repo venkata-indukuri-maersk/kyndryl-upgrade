@@ -31,11 +31,7 @@ Note: It can run in parallel if virtual machines are not the same. Trying to Upg
 
 <span style="color:green"> Wait for upgrade completion : ~ 0:30minutes </span>
 
-6- Execute Post Upgrade Operation
-7- Check files for validation of OS upgraded
-8- VM Upgrade > Yes/No
-9- Starts with Application Validation
-10- Application Validated > Yes/No
+
 
 <span style="color:blue">Upgrade Completed</span> || <span style="color:red">Roll Back Completed</span>
 
