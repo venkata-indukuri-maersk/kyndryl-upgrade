@@ -5,48 +5,37 @@ Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023
 
 Main Tasks:
-- Execute the following activities to start upgarde of Windows OS 2012/2016/2019 virtual machines
+- Execute the following activities to ensure consistency on all tools and reportings of upgraded virtual machines
 
--- Location of ISO to perform upgrade
--- Clean Shutdown Virtual Machine
--- Force Virtual Machine in case doesn't power off gracefully
--- Create a Snapshop for roll back purposes
--- Mount ISO on the virtual machine ( Upgrade OS ISO image)
--- MANUAL INTERVENTION TO EXECUTE SCRIPT to UPGRADE
+-- Move Computer Object from one OU to target OU
+-- Unmount ISO from Virtual Machine
+-- Install Softwares:  Such as 7-Zip, Chrome, IBM Tools, etc ( any customization)
+-- Collect new information from Upgraded OS to shared folder ( easy to compare before and after upgrade)
+
 #>
 
 #----------------- Set variables ----------------
 
 #Virtual Machine Names : Example:  '2016upgrade05','2016upgrade03','2016upgrade06' 
-#$vmName = '2016upgrade02'
-$vmNames = '2016upgrade02'
-
+$vmNames = '2016upgrade05','2016upgrade03','2016upgrade06' 
 
 #folder path to save reports
 $folderPath =  '\\192.168.1.228\Upgrade'
 
-
 # Set Target OU
 $targetOU = 'OU=2019,OU=Servers,OU=Kyndryl,DC=vra4u,DC=local'
-
 
 #ISO Path for the Upgrade to be used
 $isoPath = '[CLU-LUN001] ISO/en_windows_server_2019_x64_dvd_4cb967d8.iso'
 
 
 #----------------- Set Modules ----------------
-
 #AD Module
 Import-Module ActiveDirectory 
 
-
-
 #----------------- Start Process ----------------
-
 # This will trigger an execution to do multiple machines
 foreach ($vmName in $vmNames){
-
-
 
     #----------------- Adjust Computer Account in AD ----------------
     #Identify the AD Computer Object
@@ -54,7 +43,6 @@ foreach ($vmName in $vmNames){
 
     #move Object to Target OU
     Move-ADObject -Identity $adComputer -TargetPath $targetOU
-
 
     #----------------- Start vCenter Jobs ----------------
     #Get Virtual Machine in vCenter / ID
@@ -136,8 +124,6 @@ foreach ($vmName in $vmNames){
     #invoke Scripts in OS
     Invoke-VMScript -VM $vm -ScriptText $script -GuestCredential $cred
 
-
-
     # Get Refreshed Information from VM within OS
     write-host "Add new files for comparisson to shared drive"
     $script = {
@@ -145,15 +131,12 @@ foreach ($vmName in $vmNames){
         $dateExec = get-date -format 'MM-dd-yyyy';
         $folder = 'C:\Upgrade'
 
-
-
         #Add new files to upgrade Folder
         cd c:\\Upgrade;
 
         #Cleanup old executables files
         del .\7z2301-x64.msi -Confirm:false
         del .\Chrome.exe -Confirm:false
-
 
         #Get new OS information.
         Get-ComputerInfo -Property WindowsBuildLabEx,WindowsEditionID | Out-File -FilePath c:\\upgrade\\upgrade-computerinfo.txt;
@@ -170,8 +153,10 @@ foreach ($vmName in $vmNames){
     #Pre-Check completed
     write-host "Post operations Completed for Virtual Machine" $vmName
 
-}
-
+} ## End of Post Upgrade for all Virtual Machines
+write-host '******************' -backgroundcolor red -foregroundcolor white
+write-host 'Compare Shared folder files if all VMs upgraded and starts appllication validation!' -backgroundcolor yellow -foregroundcolor red
+write-host '******************' -backgroundcolor red -foregroundcolor white
 
 
 

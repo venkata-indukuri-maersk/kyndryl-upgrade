@@ -5,14 +5,14 @@ Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023
 
 Main Tasks:
-- Execute the following activities to start upgarde of Windows OS 2012/2016/2019 virtual machines
+- Execute the following activities to start Roll Back Process
 
--- Location of ISO to perform upgrade
--- Clean Shutdown Virtual Machine
--- Force Virtual Machine in case doesn't power off gracefully
--- Create a Snapshop for roll back purposes
--- Mount ISO on the virtual machine ( Upgrade OS ISO image)
--- MANUAL INTERVENTION TO EXECUTE SCRIPT to UPGRADE
+-- Move Computer Object from Target OU to Original OU (2019 to 2016 OU)
+-- Shutdown Virtual Machine
+-- Revert to Snapshot ( to original state - in this case prior to upgrade - Windows 2016 version)
+-- 
+
+
 #>
 
 #----------------- Set variables ----------------
@@ -57,7 +57,6 @@ foreach ($vmName in $vmNames){
     $_this = Get-View -Id $vmId
     $_this.ShutdownGuest()
 
-
     # Loop until the VM is powered off (offline)
     while ((Get-VM -Name $vmName).PowerState -ne "PoweredOff") {
         Write-Host "The virtual machine '$vmName' is still online."
@@ -66,8 +65,6 @@ foreach ($vmName in $vmNames){
         Start-Sleep -Seconds 10
     }
 
-
-
     #---------------RevertToSnapshot to Prior of Upgrade---------------
     $snap = Get-Snapshot -VM $vm | Sort-Object -Property Created -Descending | Select -First 1
     Set-VM -VM $vm -SnapShot $snap -Confirm:$false
@@ -75,15 +72,16 @@ foreach ($vmName in $vmNames){
     #---------------Delete Upgrade Snapshot of Upgrade---------------
     Remove-Snapshot -Snapshot $snap  -RemoveChildren -Confirm:$false
 
-
-
     #---------------PowerOnMultiVM_Task---------------
     # Wait for vmtools to be up and running
     write-Host "# Wait for vmtools to be up and running" 
     Start-VM $vmName | Wait-Tools
 
-
     #---------------Roll Back Completed---------------
     write-host "Roll Back Completed for vm: " $vmName -BackgroundColor green
 
 }# Finish Roll Back all machines
+
+write-host '******************' -backgroundcolor green -foregroundcolor white
+write-host 'All machines roll back successfully' -backgroundcolor yellow -foregroundcolor red
+write-host '******************' -backgroundcolor green -foregroundcolor white

@@ -5,14 +5,14 @@ Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023
 
 Main Tasks:
-- Execute the following activities to start upgarde of Windows OS 2012/2016/2019 virtual machines
+- Execute the following activities to start upgrade of Windows OS 2012/2016/2019 virtual machines
 
 -- Location of ISO to perform upgrade
 -- Clean Shutdown Virtual Machine
 -- Force Virtual Machine in case doesn't power off gracefully
 -- Create a Snapshop for roll back purposes
 -- Mount ISO on the virtual machine ( Upgrade OS ISO image)
--- MANUAL INTERVENTION TO EXECUTE SCRIPT to UPGRADE
+-- MANUAL INTERVENTION TO EXECUTE SCRIPT to UPGRADE  ( You must logon to vm and execute the script on c:\\upgrade\\run_this_script_to_upgrade.ps1)
 #>
 
 #----------------- Set variables ----------------
@@ -43,11 +43,20 @@ foreach ($vmName in $vmNames){
 
 
     # Loop until the VM is powered off (offline)
+    $limit = 
     while ((Get-VM -Name $vmName).PowerState -ne "PoweredOff") {
         Write-Host "The virtual machine '$vmName' is still online."
     
         # Wait for a specified interval (e.g., 10 seconds) before checking again
         Start-Sleep -Seconds 10
+        
+        # Force shutdown after 10 minutes
+        $limit += 1
+        if ($limit -eq 60) {
+            Write-Host "The virtual machine '$vmName' is still online. Forcing shutdown..."
+            Stop-VM -VM $vmName -Confirm:$false -Force
+        }
+
     }
 
 
@@ -122,4 +131,7 @@ foreach ($vmName in $vmNames){
         Invoke-VMScript -VM $vm -ScriptText $script -GuestCredential $cred
     #>
 
-} ## End of Execution
+} ## End of Upgrade for all Virtual Machines - Remember to do the MANUAL TASKS
+write-host '******************' -backgroundcolor red -foregroundcolor white
+write-host 'End of Upgrade for all Virtual Machines - Remember to do the MANUAL TASKS' -backgroundcolor yellow -foregroundcolor red
+write-host '******************' -backgroundcolor red -foregroundcolor white
