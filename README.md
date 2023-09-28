@@ -17,17 +17,17 @@ According to the following diagram, the exection of scripts are to run on this s
 
 Note: It can run in parallel if virtual machines are not the same. Trying to Upgrade and Roll back at same time, not a good strategy.
 
-><span style="color:blue">NO Downtime nor Impact</span>.
+<span style="color:blue">NO Downtime nor Impact</span>.
 
 * 1- Set you Credentials #Guarantee you have enough priviledges for the tasks
 * 2- Logon to vCenter via PowerCLI
 * 3- Execute Pre-Requisite scripts ( No downtime or impact)
 
-><span style="color:red"> Downtime & Impact = Requires change window</span>.
+<span style="color:red"> Downtime & Impact = Requires change window</span>.
 
 * 4- Execute Upgrade Scripts
-* 5- > MANUAL TASK: Execute the Powershell Script on 
->>c:\\upgrade\\upgrade_this_machine.ps1
+* 5- > MANUAL TASK: Execute the Powershell Script on  
+> c:\\upgrade\\upgrade_this_machine.ps1
 
 <span style="color:green"> Wait for upgrade completion : ~ 0:30minutes </span>
 
