@@ -11,7 +11,7 @@ Main Tasks:
 -- Shutdown Virtual Machine
 -- Revert to Snapshot ( to original state - in this case prior to upgrade - Windows 2016 version)
 -- Power On Virtual Machine
--- Roll Back Completed
+-- Roll Back Completed.
 #>
 
 #----------------- Set variables ----------------
