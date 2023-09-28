@@ -40,6 +40,6 @@ Note: It can run in parallel if virtual machines are not the same. Trying to Upg
 <span style="color:blue">Upgrade Completed</span> || <span style="color:red">Roll Back Completed</span>
 
 
-### Workflow Diagram
+## Workflow Diagram
 ![Workflow](workflow.jpeg)
 
