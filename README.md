@@ -30,6 +30,7 @@ Note: It can run in parallel if virtual machines are not the same. Trying to Upg
 >>c:\\upgrade\\upgrade_this_machine.ps1
 
 <span style="color:green">ˆ Wait for upgrade completion ˆ : ~0:30minutes</span>
+
 6- Execute Post Upgrade Operation
 7- Check files for validation of OS upgraded
 8- VM Upgrade > Yes/No
