@@ -1,14 +1,26 @@
-﻿#Prepare the jump Server with required tools
+﻿<#
+Objective: Created to help on the upgrade in-place project for Kyndrl team | Maersk Upgrades
 
-#RSAT to manage AD Objects ( Move Computer from 1 OU to another)
-#Install-WindowsFeature -Name "RSAT-AD-PowerShell" -IncludeAllSubFeature
+Created By: Jose Cavalheri (jose.cavalheri@maersk.com)
+Date: 27/09/2023
+
+Main Tasks:
+- Enable Jump Server to have the necesaary tools for the automation scripts requirements
+
+Install Tools:
+-- RSAT : Used to manage Active Directory Computer objects
+-- PowerCLI : Used to manage vCenter & VMs activities
+#>
+
+#----------------- Install Tools Once ----------------
+#RSAT to manage AD Objects ( Move Computer from one OU to another)
+Install-WindowsFeature -Name "RSAT-AD-PowerShell" -IncludeAllSubFeature
 
 #Install PowerCLI Module ( Manage vCenter VMs, such as shutdown, snapshots, etc)
-#Install-Module VMware.PowerCLI -Scope CurrentUser
+Install-Module VMware.PowerCLI -Scope CurrentUser
 
 
-
-
+#----------------- Connecting to vCenter Environment ----------------
 #Disable the CEIP
 Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
 
@@ -16,10 +28,7 @@ Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
 Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
 
 # Connect to Vcenter
-Connect-VIServer -Server vcsa.vra4u.local -User $vcenterUser -Password $vcenterPassword
+Connect-VIServer -Server $vcenterServer -User $vcenterUser -Password $vcenterPassword
 
-
-#Install RSAT on management server
-#Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
-
+#clean console
 clear

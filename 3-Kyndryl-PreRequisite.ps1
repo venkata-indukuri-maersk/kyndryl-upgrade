@@ -1,7 +1,7 @@
 ﻿<#
 Objective: Created to help on the upgrade in-place project for Kyndrl team | Maersk Upgrades
 
-Created By: Jose Cavalheri (jose.cavalheri@maersk.com
+Created By: Jose Cavalheri (jose.cavalheri@maersk.com)
 Date: 27/09/2023
 
 Main Tasks:
