@@ -17,7 +17,6 @@ Main Tasks:
 #----------------- Set variables ----------------
 
 #Virtual Machine Names : Example:  '2016upgrade05','2016upgrade03','2016upgrade06' 
-#$vmName = '2016upgrade02'
 $vmNames = '2016upgrade05','2016upgrade06','2016upgrade07'
 
 
