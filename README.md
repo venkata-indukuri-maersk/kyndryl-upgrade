@@ -19,23 +19,23 @@ Note: It can run in parallel if virtual machines are not the same. Trying to Upg
 
 ><span style="color:blue">NO Downtime nor Impact</span>.
 
-1- Set you Credentials #Guarantee you have enough priviledges for the tasks
-2- Logon to vCenter via PowerCLI
-3- Execute Pre-Requisite scripts ( No downtime or impact)
+* 1- Set you Credentials #Guarantee you have enough priviledges for the tasks
+* 2- Logon to vCenter via PowerCLI
+* 3- Execute Pre-Requisite scripts ( No downtime or impact)
 
 ><span style="color:red"> Downtime & Impact = Requires change window</span>.
 
-4- Execute Upgrade Scripts
-5- > MANUAL TASK: Execute the Powershell Script on 
+* 4- Execute Upgrade Scripts
+* 5- > MANUAL TASK: Execute the Powershell Script on 
 >>c:\\upgrade\\upgrade_this_machine.ps1
 
 <span style="color:green"> Wait for upgrade completion : ~ 0:30minutes </span>
 
-6- Execute Post Upgrade Operation
-7- Check files for validation of OS upgraded
-8- VM Upgrade -> Yes/No
-9- Starts with Application Validation
-10- Application Validated -> Yes/No
+* 6- Execute Post Upgrade Operation
+* 7- Check files for validation of OS upgraded
+* 8- VM Upgrade -> Yes/No
+* 9- Starts with Application Validation
+* 10- Application Validated -> Yes/No
 
 <span style="color:blue">Upgrade Completed</span> || <span style="color:red">Roll Back Completed</span>
 
