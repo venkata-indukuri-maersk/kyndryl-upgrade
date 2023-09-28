@@ -10,9 +10,8 @@ Main Tasks:
 -- Move Computer Object from Target OU to Original OU (2019 to 2016 OU)
 -- Shutdown Virtual Machine
 -- Revert to Snapshot ( to original state - in this case prior to upgrade - Windows 2016 version)
--- 
-
-
+-- Power On Virtual Machine
+-- Roll Back Completed
 #>
 
 #----------------- Set variables ----------------

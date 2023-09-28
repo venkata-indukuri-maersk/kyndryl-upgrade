@@ -11,7 +11,6 @@ Main Tasks:
 -- Unmount ISO from Virtual Machine
 -- Install Softwares:  Such as 7-Zip, Chrome, IBM Tools, etc ( any customization)
 -- Collect new information from Upgraded OS to shared folder ( easy to compare before and after upgrade)
-
 #>
 
 #----------------- Set variables ----------------
