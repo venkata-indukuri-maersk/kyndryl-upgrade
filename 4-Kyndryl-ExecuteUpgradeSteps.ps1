@@ -61,7 +61,7 @@ foreach ($vmName in $vmNames){
 
 
     #---------------CreateSnapshot_Task---------------
-    write-host "#Create a Roll bacj Scenario - Snapshot"
+    write-host "#Create a Roll back Scenario - Snapshot"
     $name = 'Automatic Upgrade'
     $description = 'Automatic Upgrade  during upgrade in place'
     $memory = $false
