@@ -1,5 +1,5 @@
-# Kyndryl Scripts - Windows Upgrade from 2016 to 2019
-This Repo contains powershell scripts to upgrade windows server 2016 to 2019 in Kyndryl Environment.
+# 'A' Scripts - Windows Upgrade from 2016 to 2019
+This Repo contains powershell scripts to upgrade windows server 2016 to 2019 in 'A' Environment.
 
 ### Approach:
 Utilizes default mechanism that allows reduction of downtime and effort from all the virtualization & Automation team.
