@@ -1,5 +1,5 @@
 ﻿<#
-Objective: Created to help on the upgrade in-place project for Kyndrl team | Maersk Upgrades
+Objective: Created to help on the upgrade in-place project for 'A' team | Maersk Upgrades
 
 Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023

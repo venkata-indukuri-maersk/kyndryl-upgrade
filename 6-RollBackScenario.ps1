@@ -1,5 +1,5 @@
 ﻿<#
-Objective: Created to help on the upgrade in-place project for Kyndrl team | Maersk Upgrades
+Objective: Created to help on the upgrade in-place project for 'A' team | Maersk Upgrades
 
 Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023
@@ -21,7 +21,7 @@ $vmNames = '2016upgrade05','2016upgrade06','2016upgrade07'
 
 
 # Set Target Roll Back OU
-$targetOU = 'OU=2016,OU=Servers,OU=Kyndryl,DC=vra4u,DC=local'
+$targetOU = 'OU=2016,OU=Servers,OU='A',DC=vra4u,DC=local'
 
 
 #----------------- Set Modules ----------------
