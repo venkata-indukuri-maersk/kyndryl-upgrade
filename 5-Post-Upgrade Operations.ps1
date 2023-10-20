@@ -1,5 +1,5 @@
 ﻿<#
-Objective: Created to help on the upgrade in-place project for Kyndrl team | Maersk Upgrades
+Objective: Created to help on the upgrade in-place project for 'A' team | Maersk Upgrades
 
 Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023
@@ -22,7 +22,7 @@ $vmNames = '2016upgrade05','2016upgrade03','2016upgrade06'
 $folderPath =  '\\192.168.1.228\Upgrade'
 
 # Set Target OU
-$targetOU = 'OU=2019,OU=Servers,OU=Kyndryl,DC=vra4u,DC=local'
+$targetOU = 'OU=2019,OU=Servers,OU='A',DC=vra4u,DC=local'
 
 #ISO Path for the Upgrade to be used
 $isoPath = '[CLU-LUN001] ISO/en_windows_server_2019_x64_dvd_4cb967d8.iso'

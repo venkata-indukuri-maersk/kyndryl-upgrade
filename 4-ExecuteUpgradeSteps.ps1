@@ -1,5 +1,5 @@
 ﻿<#
-Objective: Created to help on the upgrade in-place project for Kyndrl team | Maersk Upgrades
+Objective: Created to help on the upgrade in-place project for 'A' team | Maersk Upgrades
 
 Created By: Jose Cavalheri (jose.cavalheri@maersk.com
 Date: 27/09/2023
@@ -61,7 +61,7 @@ foreach ($vmName in $vmNames){
 
 
     #---------------CreateSnapshot_Task---------------
-    write-host "#Create a Roll bacj Scenario - Snapshot"
+    write-host "#Create a Roll back Scenario - Snapshot"
     $name = 'Automatic Upgrade'
     $description = 'Automatic Upgrade  during upgrade in place'
     $memory = $false
